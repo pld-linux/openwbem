@@ -1,0 +1,200 @@
+--- openwbem-3.2.2/src/common/OW_StringStream.hpp.orig	2005-02-03 01:52:45.000000000 +0100
++++ openwbem-3.2.2/src/common/OW_StringStream.hpp	2012-07-01 15:15:55.774542527 +0200
+@@ -38,6 +38,7 @@
+ #include "OW_config.h"
+ #include "OW_StringBuffer.hpp"
+ #include "OW_BaseStreamBuffer.hpp"
++#include <cstdio>
+ #if defined(OW_HAVE_OSTREAM) && defined(OW_HAVE_ISTREAM)
+ #include <istream>
+ #include <ostream>
+--- openwbem-3.2.2/src/cim/OW_CIMDateTime.cpp.orig	2005-02-03 01:52:41.000000000 +0100
++++ openwbem-3.2.2/src/cim/OW_CIMDateTime.cpp	2012-07-01 15:24:25.371187807 +0200
+@@ -44,6 +44,8 @@
+ #include "OW_Assertion.hpp"
+ 
+ #include <cstdio>
++#include <cstdlib>
++#include <cstring>
+ #if defined(OW_HAVE_ISTREAM) && defined(OW_HAVE_OSTREAM)
+ #include <istream>
+ #include <ostream>
+--- openwbem-3.2.2/src/common/OW_Enumeration.hpp.orig	2005-02-03 01:52:44.000000000 +0100
++++ openwbem-3.2.2/src/common/OW_Enumeration.hpp	2012-07-01 15:30:34.754505639 +0200
+@@ -38,6 +38,7 @@
+ #include "OW_TempFileEnumerationImplBase.hpp"
+ #include "OW_IntrusiveReference.hpp"
+ 
++#include <cstddef>
+ #include <iterator> // for the iterator tags
+ 
+ namespace OW_NAMESPACE
+--- openwbem-3.2.2/src/common/OW_BaseStreamBuffer.cpp.orig	2005-02-03 01:52:44.000000000 +0100
++++ openwbem-3.2.2/src/common/OW_BaseStreamBuffer.cpp	2012-07-01 15:48:10.157794680 +0200
+@@ -40,6 +40,7 @@
+ #include "OW_Assertion.hpp"
+ #include <iostream> // for cerr
+ #include <cstring> // for memcpy
++#include <cstdio>
+ 
+ namespace OW_NAMESPACE
+ {
+--- openwbem-3.2.2/src/common/OW_DataStreams.hpp.orig	2005-02-03 01:52:44.000000000 +0100
++++ openwbem-3.2.2/src/common/OW_DataStreams.hpp	2012-07-01 16:38:33.967667784 +0200
+@@ -37,6 +37,7 @@
+ #define OW_DATA_STREAMS_HPP_INCLUDE_GUARD_
+ #include "OW_config.h"
+ #include "OW_Types.hpp"
++#include <cstdio>
+ #if defined(OW_HAVE_ISTREAM) && defined(OW_HAVE_OSTREAM)
+ #include <istream>
+ #include <ostream>
+--- openwbem-3.2.2/src/common/OW_LogMessagePatternFormatter.cpp.orig	2005-02-03 01:52:45.000000000 +0100
++++ openwbem-3.2.2/src/common/OW_LogMessagePatternFormatter.cpp	2012-07-01 16:42:05.170992255 +0200
+@@ -45,6 +45,7 @@
+ 
+ #include <vector>
+ #include <cstdlib> // for strtol
++#include <climits>
+ 
+ extern "C"
+ {
+--- openwbem-3.2.2/src/common/OW_PosixFile.cpp.orig	2005-02-03 01:52:45.000000000 +0100
++++ openwbem-3.2.2/src/common/OW_PosixFile.cpp	2012-07-01 16:49:22.554307235 +0200
+@@ -47,7 +47,7 @@
+ 		#include <unistd.h>
+ 	#endif
+ #endif
+-
++#include <cstring>
+ 
+ namespace OW_NAMESPACE
+ {
+--- openwbem-3.2.2/src/common/OW_StackTrace.cpp.orig	2005-02-03 01:52:45.000000000 +0100
++++ openwbem-3.2.2/src/common/OW_StackTrace.cpp	2012-07-01 16:54:39.644293921 +0200
+@@ -52,6 +52,7 @@
+ #include "OW_UnnamedPipe.hpp"
+ #include "OW_Format.hpp"
+ #include "OW_Array.hpp"
++#include <cstdlib>
+ #include <fstream>
+ #include <iostream>	// for cerr
+ 
+--- openwbem-3.2.2/src/common/OW_TempFileStream.cpp.orig	2005-02-03 01:52:45.000000000 +0100
++++ openwbem-3.2.2/src/common/OW_TempFileStream.cpp	2012-07-01 17:04:33.717602328 +0200
+@@ -42,6 +42,7 @@
+ #include "OW_TempFileStream.hpp"
+ #include "OW_TmpFile.hpp"
+ #include "OW_Assertion.hpp"
++#include <cstdio>
+ #include <cstring>
+ 
+ namespace OW_NAMESPACE
+--- openwbem-3.2.2/src/common/OW_IstreamBufIterator.hpp.orig	2005-02-03 01:52:44.000000000 +0100
++++ openwbem-3.2.2/src/common/OW_IstreamBufIterator.hpp	2012-07-01 17:16:34.107572097 +0200
+@@ -40,6 +40,7 @@
+ #else
+ #include <iostream>
+ #endif
++#include <cstdio>
+ 
+ 
+ namespace OW_NAMESPACE
+--- openwbem-3.2.2/src/repositories/hdb/OW_AssocDb.hpp.orig	2005-04-20 22:09:38.000000000 +0200
++++ openwbem-3.2.2/src/repositories/hdb/OW_AssocDb.hpp	2012-07-01 18:57:42.740650753 +0200
+@@ -49,6 +49,7 @@
+ #include "OW_ResultHandlerIFC.hpp"
+ #include "OW_IntrusiveReference.hpp"
+ #include "OW_IntrusiveCountableBase.hpp"
++#include <cstring>
+ 
+ namespace OW_NAMESPACE
+ {
+--- openwbem-3.2.2/src/providerifcs/npi/common/NPIExternal.cpp.orig	2005-02-03 01:52:52.000000000 +0100
++++ openwbem-3.2.2/src/providerifcs/npi/common/NPIExternal.cpp	2012-07-01 19:21:00.377258767 +0200
+@@ -1,4 +1,5 @@
+ #include <cstdio>
++#include <cstdlib>
+ #include "OW_config.h"
+ #include "NPIExternal.hpp"
+ #include "OW_CIMParamValue.hpp"
+--- openwbem-3.2.2/src/providerifcs/npi/OW_FTABLERef.hpp.orig	2005-02-03 01:52:52.000000000 +0100
++++ openwbem-3.2.2/src/providerifcs/npi/OW_FTABLERef.hpp	2012-07-01 19:19:44.870595269 +0200
+@@ -46,6 +46,7 @@
+ #include "OW_SharedLibraryReference.hpp"
+ #include "OW_Reference.hpp"
+ #include "npi.h"
++#include <cstring>
+ 
+ namespace OW_NAMESPACE
+ {
+--- openwbem-3.2.2/src/providerifcs/npi/OW_NPIProviderIFCUtils.hpp.orig	2005-02-03 01:52:52.000000000 +0100
++++ openwbem-3.2.2/src/providerifcs/npi/OW_NPIProviderIFCUtils.hpp	2012-07-01 19:20:35.360593151 +0200
+@@ -34,6 +34,7 @@
+ #include "OW_CIMParamValue.hpp"
+ #include "OW_CIMObjectPath.hpp"
+ #include "NPIExternal.hpp"
++#include <cstdlib>
+ 
+ namespace OW_NAMESPACE
+ {
+--- openwbem-3.2.2/src/providerifcs/cmpi/common/cmpiBroker.cpp.orig	2006-09-13 16:41:59.000000000 +0200
++++ openwbem-3.2.2/src/providerifcs/cmpi/common/cmpiBroker.cpp	2012-07-01 19:35:28.040555688 +0200
+@@ -19,6 +19,7 @@
+  *
+  */
+ 
++#include <cstring>
+ #include <iostream>
+ #include "cmpisrv.h"
+ #include "OW_Format.hpp"
+--- openwbem-3.2.2/src/providerifcs/cmpi/common/cmpiBrokerEnc.cpp.orig	2006-09-12 22:04:17.000000000 +0200
++++ openwbem-3.2.2/src/providerifcs/cmpi/common/cmpiBrokerEnc.cpp	2012-07-01 19:46:38.943860867 +0200
+@@ -19,6 +19,7 @@
+  *
+  */
+ 
++#include <cstring>
+ #include "cmpisrv.h"
+ #include "OW_CIMException.hpp"
+ #include "OW_CIMProperty.hpp"
+--- openwbem-3.2.2/src/providerifcs/cmpi/common/cmpiInstance.cpp.orig	2006-09-11 18:38:07.000000000 +0200
++++ openwbem-3.2.2/src/providerifcs/cmpi/common/cmpiInstance.cpp	2012-07-01 20:21:42.980439237 +0200
+@@ -23,6 +23,7 @@
+ #include "OW_CIMInstance.hpp"
+ 
+ // TEST
++#include <cstring>
+ #include <iostream>
+ using std::cout;
+ using std::endl;
+--- openwbem-3.2.2/src/cimom/server/OW_Platform.cpp.orig	2005-05-12 18:12:37.000000000 +0200
++++ openwbem-3.2.2/src/cimom/server/OW_Platform.cpp	2012-07-01 20:36:48.300401242 +0200
+@@ -88,6 +88,7 @@
+ }
+ #include <cstring>
+ #include <cstdio>
++#include <cstdlib>
+ #include <iostream>
+ 
+ using namespace std;
+--- openwbem-3.2.2/src/cimom/server/OW_PlatformSignal.cpp.orig	2005-03-22 03:20:00.000000000 +0100
++++ openwbem-3.2.2/src/cimom/server/OW_PlatformSignal.cpp	2012-07-01 20:55:59.333686270 +0200
+@@ -35,6 +35,7 @@
+ #include "OW_Platform.hpp"
+ #include "OW_PlatformSignal.hpp"
+ #include "OW_UserUtils.hpp"
++#include <cstring>
+ #include <ostream>
+ 
+ namespace OW_NAMESPACE
+--- openwbem-3.2.2/src/mof/OW_MOFCompiler.cpp.orig	2005-02-11 22:18:31.000000000 +0100
++++ openwbem-3.2.2/src/mof/OW_MOFCompiler.cpp	2012-07-01 21:50:36.936882056 +0200
+@@ -51,6 +51,7 @@
+ 
+ #include <assert.h>
+ #include <cctype>
++#include <climits>
+ 
+ // forward declarations of some lex/yacc functions we need to call.
+ void owmof_delete_buffer(YY_BUFFER_STATE b);
